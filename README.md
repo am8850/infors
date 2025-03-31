@@ -22,7 +22,7 @@ Options:
   -h, --help  Print help
 ```
 
-## Sample run
+## Sample runs
 
 ```bash
 infors system
