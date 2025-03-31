@@ -19,7 +19,7 @@ struct Cli {
 enum Commands {
     /// Shows memory usage
     Memory {},
-    /// Shows CPUs and CPUs usage
+    /// Shows cpu(s) and cpu(s) usage
     Cpus {},
     /// Shows network usage
     Network {},
@@ -31,7 +31,7 @@ enum Commands {
     Users {},
     /// Shows system information
     System {},
-    /// Shows disk frequency
+    /// Shows cpu(s) frequency
     Frequency {},
     /// Clones repos
     #[command(arg_required_else_help = true)]

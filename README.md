@@ -9,13 +9,13 @@ Usage: infors <COMMAND>
 
 Commands:
   memory       Shows memory usage
-  cpus         Shows CPUs and CPUs usage
+  cpus         Shows cpu(s) and cpu(s) usage
   network      Shows network usage
   temperature  Shows temperature
   disks        Shows disk usage
   users        Shows users
   system       Shows system information
-  frequency    Shows disk frequency
+  frequency    Shows cpu(s) frequency
   help         Print this message or the help of the given subcommand(s)
 
 Options:
