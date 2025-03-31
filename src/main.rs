@@ -1,6 +1,6 @@
 //#![crate_type = "bin"]
 use clap::Parser;
-use std::ffi::OsStr;
+//use std::ffi::OsStr;
 
 mod cmd;
 mod info;
@@ -40,69 +40,67 @@ fn main() {
         cmd::Commands::System {} => {
             let query: &str = "system";
             info::query(query);
-        }
-
-        cmd::Commands::Clone { remote } => {
-            println!("Cloning {remote}");
-            let query: &str = "memory";
-            info::query(query);
-        }
-        cmd::Commands::Diff {
-            mut base,
-            mut head,
-            mut path,
-            color,
-        } => {
-            if path.is_none() {
-                path = head;
-                head = None;
-                if path.is_none() {
-                    path = base;
-                    base = None;
-                }
-            }
-            let base = base
-                .as_deref()
-                .map(|s| s.to_str().unwrap())
-                .unwrap_or("stage");
-            let head = head
-                .as_deref()
-                .map(|s| s.to_str().unwrap())
-                .unwrap_or("worktree");
-            let path = path.as_deref().unwrap_or_else(|| OsStr::new(""));
-            println!(
-                "Diffing {}..{} {} (color={})",
-                base,
-                head,
-                path.to_string_lossy(),
-                color
-            );
-        }
-        cmd::Commands::Push { remote } => {
-            println!("Pushing to {remote}");
-        }
-        cmd::Commands::Add { path } => {
-            println!("Adding {path:?}");
-        }
-        cmd::Commands::Stash(stash) => {
-            let stash_cmd = stash
-                .command
-                .unwrap_or(cmd::StashCommands::Push(stash.push));
-            match stash_cmd {
-                cmd::StashCommands::Push(push) => {
-                    println!("Pushing {push:?}");
-                }
-                cmd::StashCommands::Pop { stash } => {
-                    println!("Popping {stash:?}");
-                }
-                cmd::StashCommands::Apply { stash } => {
-                    println!("Applying {stash:?}");
-                }
-            }
-        }
-        cmd::Commands::External(args) => {
-            println!("Calling out to {:?} with {:?}", &args[0], &args[1..]);
-        }
+        } // cmd::Commands::Clone { remote } => {
+          //     println!("Cloning {remote}");
+          //     let query: &str = "memory";
+          //     info::query(query);
+          // }
+          // cmd::Commands::Diff {
+          //     mut base,
+          //     mut head,
+          //     mut path,
+          //     color,
+          // } => {
+          //     if path.is_none() {
+          //         path = head;
+          //         head = None;
+          //         if path.is_none() {
+          //             path = base;
+          //             base = None;
+          //         }
+          //     }
+          //     let base = base
+          //         .as_deref()
+          //         .map(|s| s.to_str().unwrap())
+          //         .unwrap_or("stage");
+          //     let head = head
+          //         .as_deref()
+          //         .map(|s| s.to_str().unwrap())
+          //         .unwrap_or("worktree");
+          //     let path = path.as_deref().unwrap_or_else(|| OsStr::new(""));
+          //     println!(
+          //         "Diffing {}..{} {} (color={})",
+          //         base,
+          //         head,
+          //         path.to_string_lossy(),
+          //         color
+          //     );
+          // }
+          // cmd::Commands::Push { remote } => {
+          //     println!("Pushing to {remote}");
+          // }
+          // cmd::Commands::Add { path } => {
+          //     println!("Adding {path:?}");
+          // }
+          // cmd::Commands::Stash(stash) => {
+          //     let stash_cmd = stash
+          //         .command
+          //         .unwrap_or(cmd::StashCommands::Push(stash.push));
+          //     match stash_cmd {
+          //         cmd::StashCommands::Push(push) => {
+          //             println!("Pushing {push:?}");
+          //         }
+          //         cmd::StashCommands::Pop { stash } => {
+          //             println!("Popping {stash:?}");
+          //         }
+          //         cmd::StashCommands::Apply { stash } => {
+          //             println!("Applying {stash:?}");
+          //         }
+          //     }
+          // }
+          // cmd::Commands::External(args) => {
+          //     println!("Calling out to {:?} with {:?}", &args[0], &args[1..]);
+          // }
     }
 
     // Continued program logic goes here...
