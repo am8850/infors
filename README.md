@@ -34,7 +34,7 @@ System OS (long) version: Linux (Ubuntu 24.04)
 System host name:         ASUSPN62S
 System kernel:            Linux 5.15.167.4-microsoft-standard-WSL2
 
-info memory
+infors memory
 
 total memory:     15.54 GiB
 available memory: 8.41 GiB
@@ -42,7 +42,7 @@ used memory:      7.14 GiB
 total swap:       4.00 GiB
 used swap:        268.00 MiB
 
-info disks
+infors disks
 
 "/dev/sdc" HDD "ext4" Size: 1006.85 GiB 848.50 GiB "/"
 "/dev/sdc" HDD "ext4" Size: 1006.85 GiB 848.50 GiB "/mnt/wslg/distro"
