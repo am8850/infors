@@ -11,3 +11,6 @@ build-release:
 	@echo "Building the project..."
 	cargo build --release
 	@echo "Build completed."	
+
+install:
+	cargo install --path .
