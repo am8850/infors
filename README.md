@@ -2,6 +2,12 @@
 
 A simple Rust information system not meant to be a replacement for the system tools, but as an aide to get quick information about the system.
 
+## Installation
+
+- Install Rust
+- Clone this repo
+- Type: `cargo install --path .`
+
 ## usage
 
 ```bash
