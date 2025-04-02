@@ -40,6 +40,18 @@ fn main() {
         cmd::Commands::System {} => {
             let query: &str = "system";
             info::query(query);
+        }
+        cmd::Commands::Signals {} => {
+            let query: &str = "signals";
+            info::query(query);
+        }
+        cmd::Commands::Uptime {} => {
+            let query: &str = "uptime";
+            info::query(query);
+        }
+        cmd::Commands::Boottime {} => {
+            let query: &str = "boot_time";
+            info::query(query);
         } // cmd::Commands::Clone { remote } => {
           //     println!("Cloning {remote}");
           //     let query: &str = "memory";
