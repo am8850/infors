@@ -1,10 +1,13 @@
 #![allow(unused_must_use, non_upper_case_globals)]
 #![allow(clippy::manual_range_contains)]
 
+mod disks;
+mod memory;
+mod networks;
+
 use std::io::{self, Write};
 use std::str::FromStr;
 use sysinfo::{Components, Disks, Networks, Pid, Signal, System, Users};
-mod memory;
 
 const signals: &[Signal] = &[
     Signal::Hangup,
@@ -74,6 +77,11 @@ fn interpret_input(
 ) -> bool {
     match input.trim() {
         "help" => print_help(),
+        "refresh_all" => {
+            writeln!(&mut io::stdout(), "Refreshing all...");
+            sys.refresh_all();
+            writeln!(&mut io::stdout(), "Done.");
+        }
         "refresh_disks" => {
             writeln!(&mut io::stdout(), "Refreshing disk list...");
             disks.refresh(true);
@@ -209,23 +217,7 @@ fn interpret_input(
             }
         }
         "network" => {
-            for (interface_name, data) in networks.iter() {
-                writeln!(
-                    &mut io::stdout(),
-                    "{}:\n  ether {}\n  IPs: {}\n input data  (new / total): {} / {} B\n  output data (new / total): {} / {} B",
-                    interface_name,
-                    data.ip_networks()
-                        .iter()
-                        .map(|ip| ip.to_string())
-                        .collect::<Vec<String>>()
-                        .join(", "),
-                    data.mac_address(),
-                    data.received(),
-                    data.total_received(),
-                    data.transmitted(),
-                    data.total_transmitted(),
-                );
-            }
+            networks::print_networks(networks);
         }
         "show" => {
             writeln!(
@@ -274,26 +266,7 @@ fn interpret_input(
             }
         }
         "disks" => {
-            for disk in disks {
-                if disk.kind() == sysinfo::DiskKind::HDD
-                    || disk.kind() == sysinfo::DiskKind::SSD
-                    || disk.is_removable()
-                {
-                    writeln!(
-                        &mut io::stdout(),
-                        "{:?} {:?} {:?} Size: {} {} {:?}",
-                        disk.name(),
-                        disk.kind(),
-                        disk.file_system(),
-                        memory::format_memory(disk.total_space()),
-                        memory::format_memory(disk.available_space()),
-                        disk.mount_point()
-                    );
-                } else {
-                    //writeln!(&mut io::stdout(), "Disk: {:?}", disk);
-                }
-                //writeln!(&mut io::stdout(), "{disk:?}");
-            }
+            disks::print_disks_info(disks);
         }
         "users" => {
             for user in users {

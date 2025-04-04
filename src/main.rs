@@ -49,6 +49,14 @@ fn main() {
             let query: &str = "uptime";
             info::query(query);
         }
+        cmd::Commands::LoadAvg {} => {
+            let query: &str = "load_avg";
+            info::query(query);
+        }
+        cmd::Commands::RefreshAll {} => {
+            let query: &str = "refresh_all";
+            info::query(query);
+        }
         cmd::Commands::Boottime {} => {
             let query: &str = "boot_time";
             info::query(query);

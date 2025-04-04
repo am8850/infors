@@ -18,14 +18,18 @@ pub enum Commands {
     Boottime {},
     /// Shows cpu(s) and cpu(s) usage
     Cpus {},
-    /// Shows disk usage
+    /// Shows disk(s) usage
     Disks {},
-    /// Shows memory usage    
+    /// Shows cpu(s) frequency
     Frequency {},
-    /// Shows memory usage    
+    /// Load average,
+    LoadAvg {},
+    /// Shows memory information
     Memory {},
-    /// Shows network usage
+    /// Shows network information
     Network {},
+    /// Refresh all
+    RefreshAll {},
     /// System signals
     Signals {},
     /// Shows system information
